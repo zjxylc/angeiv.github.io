@@ -20,8 +20,8 @@ url: http://zhangxing.tk/blog
 rss_url: /pages/atom.xml
 
 # gavatar头像及Favicon
-gavatar: https://secure.gravatar.com/avatar/64318eaf95c6008876e3df7d6b7f36a1?s=256&d=identicon&r=G
-favicon: https://secure.gravatar.com/avatar/64318eaf95c6008876e3df7d6b7f36a1?s=256&d=identicon&r=G
+gavatar: https://raw.githubusercontent.com/angeiv/angeiv.github.io/master/gavatar.png
+favicon: https://raw.githubusercontent.com/angeiv/angeiv.github.io/master/favicon.ico
 
 # google analytics 设置
 ga:
