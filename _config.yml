@@ -19,8 +19,8 @@ description: 张幸的博客
 url: http://zhangxing.tk/blog
 rss_url: /pages/atom.xml
 
-# gavatar头像及Favicon
-gavatar: https://raw.githubusercontent.com/angeiv/angeiv.github.io/master/gavatar.png
+# avatar头像及Favicon
+avatar: https://raw.githubusercontent.com/angeiv/angeiv.github.io/master/gavatar.png
 favicon: https://raw.githubusercontent.com/angeiv/angeiv.github.io/master/favicon.ico
 
 # google analytics 设置
