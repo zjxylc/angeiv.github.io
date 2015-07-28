@@ -33,7 +33,7 @@ class MyClass:
 
 `__private_method`，开头两个下划线，声明该方法为**私有方法**，不能在类的外部调用。在类的内部使用`self.__private_method`
 
-## 类的专有方法
+## 专有方法
 
 该方法称为**魔法方法(Magic Methods)**。
 
@@ -128,7 +128,7 @@ class DerivedClassName(BaseClassName):
 
 ## 示例
 
-我们已经定义了一个名为Animal的类，有eat()方法和song()方法可以用，那么现在需要编写Bird类，直接从Animal类进行继承，z最大的好处就是Bird自动拥有了Animal的eat()方法和song()方法。
+我们已经定义了一个名为Animal的类，有`eat()`方法和`song()`方法可以用，那么现在需要编写`Bird`类，直接从`Animal`类进行继承，最大的好处就是`Bird`自动拥有了`Animal`的`eat()`方法和`song()`方法。
 
 ```
 #!/usr/bin/env python
@@ -310,24 +310,24 @@ game()
 
 # 新式类(new-style class)
 
-Python的新式类是2.2版本引进来的，我们可以将之前的类叫做经典类或者旧类。引入新式类官方的解释是：**为了统一类(class)和类型(type)***
+Python的新式类是2.2版本引进来的，我们可以将之前的类叫做经典类或者旧类。引入新式类官方的解释是：**为了统一类(class)和类型(type)**
 
 为了保证自己使用的是新式类，有以下方法：
 
 1. 在类模块最前边加入`__metaclass__ = type`
-2. 类从内建类object直接或间接继承。
+2. 类从内建类`object`直接或间接继承。
 
-在Python 3里面，不存在这些问题，因为所有的类都是object类的子类（隐式）。
+在Python 3里面，不存在这些问题，因为所有的类都是`object`类的子类（隐式）。
 
 http://www.python.org/doc/newstyle/
 
 # super关键字
 
-python2.2之前，类的继承通常使用的时候是多态部分那样的代码。这样是使用**非绑定(unbound)的方法(用类名引用方法)**，在参数列表引入待引用的对象(self)
+Python 2.2之前，类的继承使用的时候，通常就像多态部分示例的代码那样。这样是使用**非绑定(unbound)**的方法(用类名引用方法)，在参数列表引入待引用的对象(`self`)
 
-如果子类访问父类的属性又不想使用父类的名字
+这样有一个缺点，当一个子类的父类发生变化的时候，必须遍历整个类的定义，把所有通过非绑定方法的类名全部替换，代码量大的时候，这样的改动是灾难性的。
 
-从python2.2开始增加了一个新的关键字super，用来解决调用父类的某个方法的时候
+为了解决这个问题，从Python 2.2开始增加了一个新的关键字`super`。
 
 Python 2的`super()`是一定需要参数的，而且父类必须是一个新式类
 
@@ -360,6 +360,167 @@ class Bird(Animal):
         super().speak()
 ```
 
+在程序运行的时候两种方法的结果是一致的。但是在内部处理机制有很大不同，涉及到多继承的时候，就能表现出来。下面是一个比较复杂的类的继承(先不考虑逻辑是否合理)：
+
+```
+#!/usr/bin/env python
+# coding: utf-8
+
+
+class Animal:
+    def __init__(self):
+        print 'An animal was born. Hello world!'
+        print 'An animal is dying. Goodbye world.'
+
+
+class Bird(Animal):
+    def __init__(self):
+        print 'I am a bird.'
+        Animal.__init__(self)
+        print 'The bird is dying. Goodbye the beautiful world.'
+
+
+class Pet(Animal):
+    def __init__(self):
+        print 'I am a pet.'
+        Animal.__init__(self)
+        print 'I am old.'
+
+class Action:
+    def __init__(self):
+        print 'I can move.'
+        print 'I am leaving.'
+
+
+class Fly(Action):
+    def __init__(self):
+        print 'I can fly.'
+        Action.__init__(self)
+        print 'I am flying away.'
+
+
+class Parrot(Bird, Fly):
+    def __init__(self):
+        print 'I can say "Hello".'
+        Bird.__init__(self) 
+        Fly.__init__(self)
+        print 'Bye Bye~'
+
+
+class PetParrot(Pet, Parrot):
+    def __init__(self):
+        print 'My name is Peter, a pet bird, I can fly.'
+        Pet.__init__(self)
+        Parrot.__init__(self)
+        print 'Bye.'
+
+
+pp = PetParrot()
+```
+
+执行结果：
+
+```
+My name is Peter, a pet bird, I can fly.
+I am a pet.
+An animal was born. Hello world!
+An animal is dying. Goodbye world.
+I am old.
+I can say "Hello".
+I am a bird.
+An animal was born. Hello world!
+An animal is dying. Goodbye world.
+The bird is dying. Goodbye the beautiful world.
+I can fly.
+I can move.
+I am leaving.
+I am flying away.
+Bye Bye~
+Bye.
+```
+
+从上面的例子可以看出，`Animal`和被重复调用了两次，这显然不是我们想要的。
+
+使用`super`的改进版本，在新式类中，查看**方法解析顺序(Method Resolution Order, MRO)**可以使用`class.__mro__`：
+
+```
+#!/usr/bin/env python
+# coding: utf-8
+
+
+class Animal(object):
+    def __init__(self):
+        print 'An animal was born. Hello world!'
+        super(Animal, self).__init__()                  # new
+        print 'An animal is dying. Goodbye world.'
+
+
+class Bird(Animal):
+    def __init__(self):
+        print 'I am a bird.'
+        super(Bird, self).__init__()
+        print 'The bird is dying. Goodbye the beautiful world.'
+
+
+class Pet(Animal):
+    def __init__(self):
+        print 'I am a pet.'
+        super(Pet, self).__init__()
+        print 'I am old.'
+
+
+class Action(object):
+    def __init__(self):
+        print 'I can move.'
+        super(Action, self).__init__()                  # new
+        print 'I am leaving.'
+
+
+class Fly(Action):
+    def __init__(self):
+        print 'I can fly.'
+        super(Fly, self).__init__()
+        print 'I am flying away.'
+
+
+class Parrot(Bird, Fly):
+    def __init__(self):
+        print 'I can say "Hello".'
+        super(Parrot, self).__init__() 
+        print 'Bye Bye~'
+
+
+class PetParrot(Pet, Parrot):
+    def __init__(self):
+        print 'My name is Peter, a pet bird, I can fly.'
+        super(PetParrot, self).__init__()
+        print 'Bye.'
+
+
+print PetParrot.__mro__
+pp = PetParrot()
+```
+
+`super`在调用的时候，它的机制能够保证公共的父类只被执行一次。执行结果：
+
+```
+(<class '__main__.PetParrot'>, <class '__main__.Pet'>, <class '__main__.Parrot'>, <class '__main__.Bird'>, <class '__main__.Animal'>, <class '__main__.Fly'>, <class '__main__.Action'>, <type 'object'>)
+My name is Peter, a pet bird, I can fly.
+I am a pet.
+I can say "Hello".
+I am a bird.
+An animal was born. Hello world!
+I can fly.
+I can move.
+I am leaving.
+I am flying away.
+An animal is dying. Goodbye world.
+The bird is dying. Goodbye the beautiful world.
+Bye Bye~
+I am old.
+Bye.
+```
+
 > 参考文档：
 > 
 > 1. https://docs.python.org/3/tutorial/classes.html?highlight=class
@@ -373,3 +534,5 @@ class Bird(Animal):
 > 5. http://www.cnblogs.com/jeffwongishandsome/archive/2012/10/06/2713258.html
 > 
 > 6. http://249wangmang.blog.163.com/blog/static/5263076520122533158941/
+> 
+> 7. https://rhettinger.wordpress.com/2011/05/26/super-considered-super/
