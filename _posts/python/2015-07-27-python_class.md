@@ -35,6 +35,8 @@ class MyClass:
 
 ## 类的专有方法
 
+该方法称为**魔法方法(Magic Methods)**。
+
 ```
 __init__      构造函数，在生成对象时调用
 __del__       析构函数，释放对象时使用
@@ -54,6 +56,12 @@ __div__       除运算
 __mod__       求余运算
 __pow__       乘方
 ```
+
+> 更多讲解参见：
+> 
+> 1. http://www.rafekettler.com/magicmethods.html      [en-us]
+> 
+> 2. http://pyzh.readthedocs.org/en/latest/python-magic-methods-guide.html  [zh-hans]
 
 ## 示例
 
@@ -206,5 +214,7 @@ https://en.wikipedia.org/wiki/Duck_typing
 https://en.wikipedia.org/wiki/Duck_typing
 
 > 参考文档：
+> 
 > 1. https://docs.python.org/3/tutorial/classes.html?highlight=class
+> 
 > 2. http://www.cnblogs.com/lovemo1314/archive/2011/05/03/2035005.html
