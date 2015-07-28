@@ -7,9 +7,9 @@ keywords: python class 类 继承 super subclass 子类
 description: 
 ---
 
-## 类
+# 类(class)
 
-在面向对象编程的时候，我们会用到类。类在实例化之后，可以对它的属性进行访问。
+在**面向对象编程(Object Oriented Programming, OOP)**的时候，我们会用到类。类在实例化之后，可以对它的属性进行访问。
 
 类的结构示例：
 
@@ -21,25 +21,28 @@ class MyClass:
         return 'hello world'
 ```
 
-### 类的私有属性
+## 类的私有属性
 
-```__private_attrs```，开头两个下划线，声明该属性为***私有属性***，不能在类的外部被使用或者直接访问。类的内部需要用```self.__private__attrs```来使用。
+`__private_attr`，开头两个下划线，声明该属性为**私有属性**，不能在类的外部被使用或者直接访问。类的内部需要用`self.__private_attr`来使用。
 
-### 类的方法
+## 类的方法(method)
 
-类的内部，使用```def```关键字可以定义一个方法，与一般函数定义不同，类的方法必须包包含参数```self```，并且为第一个参数。
+类的内部，使用`def`关键字可以定义一个方法，与一般函数定义不同，类的方法必须包含参数`self`，并且为第一个参数。
 
-### 类的私有方法
+## 类的私有方法
 
-```__private_method```，开头两个下划线，声明该方法为***私有方法***，不能在类的外部调用。在类的内部使用```self.__private_method```
+`__private_method`，开头两个下划线，声明该方法为**私有方法**，不能在类的外部调用。在类的内部使用`self.__private_method`
 
-### 类的专有方法
+## 类的专有方法
+
 ```
 __init__      构造函数，在生成对象时调用
 __del__       析构函数，释放对象时使用
+
 __repr__      打印，转换
 __setitem__   按照索引赋值
 __getitem__   按照索引获取值
+
 __len__       获得长度
 __cmp__       比较运算
 __call__      函数调用
@@ -52,7 +55,7 @@ __mod__       求余运算
 __pow__       乘方
 ```
 
-### 示例
+## 示例
 
 类的示例：
 
@@ -95,9 +98,9 @@ Ho~ho~
 Animal become extinct. Goodbye World.
 ```
 
-## 类的继承
+# 继承
 
-### 单继承(Inheritance)
+## 单继承(Inheritance)
 
 示例结构如下：
 
@@ -113,7 +116,7 @@ class DerivedClassName(BaseClassName):
 > inheritance  美[ɪnˈherɪt(ə)ns]  继承
 > derive       美[dɪ'raɪv]        衍生
 
-### 示例
+## 示例
 
 ```
 #!/usr/bin/env python
@@ -177,7 +180,7 @@ An parrot is dying. Goodbye World.
 
 英文的冠词没有做处理。
 
-### 多重继承(Multiple Inheritance)
+## 多重继承(Multiple Inheritance)
 
 多重继承的示例如下：
 
@@ -190,13 +193,15 @@ class DerivedClassName(Base1, Base2, Base3):
     <statement-N>
 ```
 
-## 新式类(new-style class)
+# 多态
+
+# 新式类(new-style class)
 
 http://www.python.org/doc/newstyle/
 
 https://en.wikipedia.org/wiki/Duck_typing
 
-### 鸭子类型(Duck typing)
+## 鸭子类型(Duck typing)
 
 https://en.wikipedia.org/wiki/Duck_typing
 
