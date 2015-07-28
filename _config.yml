@@ -26,7 +26,7 @@ favicon: https://raw.githubusercontent.com/angeiv/angeiv.github.io/master/favico
 # google analytics 设置
 ga:
   id: UA-65672465-1
-  url: http://angeiv.github.io/
+  url: angeiv.github.io
 
 # disqus 设置
 disqus:
