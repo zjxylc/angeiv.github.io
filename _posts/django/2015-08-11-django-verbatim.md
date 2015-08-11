@@ -2,7 +2,7 @@
 layout: post
 title: Django verbatim
 category: django
-tags: django verbatim 
+tags: django 
 keywords: django verbatim
 description: 
 ---
