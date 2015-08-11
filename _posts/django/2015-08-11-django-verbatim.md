@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Django过滤器
+title: Django verbatim
 category: django
 tags: django verbatim 
 keywords: django verbatim
