@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Zabbix 2.2 监控 MySQL
-category: zabbix
+category: Zabbix
 tags: zabbix
 keywords: zabbix mysql zabbix2.2
 description: 

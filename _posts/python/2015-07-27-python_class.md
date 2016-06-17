@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Python类
-category: python
+category: Python
 tags: python class 类
 keywords: python class 类 继承 super subclass 子类
 description: 
