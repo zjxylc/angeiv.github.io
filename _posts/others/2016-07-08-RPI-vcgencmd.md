@@ -1,10 +1,10 @@
 ---
 layout: post
-title: RPI vcgencmd usage
+title: Raspberry Pi(RPI) vcgencmd usage
 category: 杂项
 tags: vcgencmd raspberry pi
 keywords: vcgencmd raspberry pi temperature
-description: 
+description:
 ---
 
 ## RPI vcgencmd usage
