@@ -36,6 +36,7 @@ Puppet::Type.newtype(:gitrepo) do
   end
 end
 ```
+
 * The name of the type is the only required argument to `newtype`. The name must be a [Ruby symbol](http://www.ruby-doc.org/core/Symbol.html), and the name of the file containing the type must match the type’s name.
 * The `newtype` method also requires a [block of code](http://www.robertsosinski.com/2008/12/21/understanding-ruby-blocks-procs-and-lambdas/), specified with either curly braces (`{ ... }`) or the `do ... end` syntax. This code block will implement the type, and contains all of the properties and parameters. The block will not be passed any arguments.
 * `Puppet::Type.newtype(:gitrepo)` 注册一种新类型gitrepo
@@ -88,6 +89,13 @@ Puppet::Type.newtype(:database) do
   end
 end
 ```
+* `:database` 是[Ruby symbol](http://www.ruby-doc.org/core/Symbol.html)， 符号，名称标签。
+* `ensurable` ensure property, this property uses three methods on the provider: create, destroy, and exists?. The last method, somewhat obviously, is a boolean to determine if the resource current exists. If a resource’s ensure property is out of sync, then no other properties will be checked or modified.
+* `ensure` property should be the first property, because puppet keeps track of the definition order, and it always checks and fixes properties in the order they are defined.
+* [Regular expressions](http://www.rubyist.net/~slagell/ruby/regexp.html) `$`: start with, `\w`: word character; same as `[0-9A-Za-z_]`, `+`: one or more repetitions of the preceding
+* Array value: By default, if a property is assigned multiple values in an array:
+    * It is considered in sync if any of those values matches the current value.
+    * If none of those values match, the first one will be used when syncing the property.
 
 也可以为这个参数能够接收的所有值指定一个列表:
 
