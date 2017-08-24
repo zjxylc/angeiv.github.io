@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Puppet custom provider
-category: puppet
+category: Puppet
 tags: puppet type
 keywords: puppet provider
 description:

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Puppet custom type
-category: puppet
+category: Puppet
 tags: puppet type
 keywords: puppet type
 description:
