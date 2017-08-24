@@ -4,7 +4,7 @@ title: Python类
 category: Python
 tags: python class 类
 keywords: python class 类 继承 super subclass 子类
-description: 
+description:
 ---
 
 # 类(class)
@@ -58,9 +58,9 @@ __pow__       乘方
 ```
 
 > 更多讲解参见：
-> 
+>
 > 1. http://www.rafekettler.com/magicmethods.html      [en-us]
-> 
+>
 > 2. http://pyzh.readthedocs.org/en/latest/python-magic-methods-guide.html  [zh-hans]
 
 ## 示例
@@ -402,7 +402,7 @@ class Fly(Action):
 class Parrot(Bird, Fly):
     def __init__(self):
         print 'I can say "Hello".'
-        Bird.__init__(self) 
+        Bird.__init__(self)
         Fly.__init__(self)
         print 'Bye Bye~'
 
@@ -486,7 +486,7 @@ class Fly(Action):
 class Parrot(Bird, Fly):
     def __init__(self):
         print 'I can say "Hello".'
-        super(Parrot, self).__init__() 
+        super(Parrot, self).__init__()
         print 'Bye Bye~'
 
 
@@ -522,17 +522,17 @@ Bye.
 ```
 
 > 参考文档：
-> 
+>
 > 1. https://docs.python.org/3/tutorial/classes.html?highlight=class
-> 
+>
 > 2. http://www.cnblogs.com/lovemo1314/archive/2011/05/03/2035005.html
-> 
+>
 > 3. http://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000/001431865288798deef438d865e4c2985acff7e9fad15e3000
-> 
+>
 > 4. http://segmentfault.com/a/1190000000455295
-> 
+>
 > 5. http://www.cnblogs.com/jeffwongishandsome/archive/2012/10/06/2713258.html
-> 
+>
 > 6. http://249wangmang.blog.163.com/blog/static/5263076520122533158941/
-> 
+>
 > 7. https://rhettinger.wordpress.com/2011/05/26/super-considered-super/

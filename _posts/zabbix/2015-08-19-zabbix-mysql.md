@@ -4,7 +4,7 @@ title: Zabbix 2.2 监控 MySQL
 category: Zabbix
 tags: zabbix
 keywords: zabbix mysql zabbix2.2
-description: 
+description:
 ---
 
 使用Zabbix 2.2系统自带的模板监控MySQL的状态。
@@ -20,7 +20,7 @@ description:
 
 1. 在zabbix的主机监控下添加**Template App MySQL**的监控项。
 2. 在被监控的主机上建立一个不需要任何权限的MySQL账户：
-  
+
         GRANT USAGE ON *.* TO 'zabbix'@'localhost' IDENTIFIED BY '密码';
         FLUSH PRIVILEGES;
 

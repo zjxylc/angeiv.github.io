@@ -6,15 +6,15 @@ kramdown:
   input: GFM
 
 # 作者信息
-author: 
+author:
   name: 张幸
   email: angeiv.zhang@gmail.com
   link: http://angeiv.github.io/
-  weibo: 
+  weibo:
   github: http://github.com/angeiv
 
 # 站点信息
-title: 张幸的博客 
+title: 张幸的博客
 description: 张幸的博客
 url: http://angeiv.github.io/
 rss_url: /pages/atom.xml
@@ -36,7 +36,7 @@ disqus:
 active: 技术
 
 # 首页除了最新文章外显示分类
-cates: 
+cates:
   - Python
   - OpenStack
 

@@ -4,7 +4,7 @@ title: Linux Swap
 category: Linux
 tags: linux
 keywords: linux swap
-description: 
+description:
 ---
 
 ## Recommended System Swap Space
