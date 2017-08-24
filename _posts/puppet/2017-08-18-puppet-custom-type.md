@@ -15,6 +15,8 @@ description:
 
 Types are created by calling the `newtype` method on the `Puppet::Type` class.
 
+### 示例1
+
 ```ruby
 # lib/puppet/type/gitrepo.rb
 Puppet::Type.newtype(:gitrepo) do
@@ -43,6 +45,49 @@ end
 * `isnamevar` 声明告知 Puppet source 这个参数是这个类型的名称参数。所以，当声明这个资源的一个实例时，无论给这个资源什么名字，这个名字都会是 `source` 这个参数的值
 * `newparam(:path)` 该类型包含 `path` 参数
 * `validate` 参数校验机制，如果传递不合适的参数，会返回有用的错误信息
+
+### 示例2
+
+```ruby
+# lib/puppet/type/database.rb
+Puppet::Type.newtype(:database) do
+  @doc = %q{Creates a new database. Depending
+    on the provider, this may create relational
+    databases or NoSQL document stores.
+
+    Example:
+
+        database {'mydatabase':
+          ensure => present,
+          owner  => root,
+        }
+  }
+
+  ensurable
+
+  newproperty(:owner) do
+    desc "The owner of the database."
+    validate do |value|
+      unless value =~ /^\w+/
+        raise ArgumentError, "%s is not a valid user name" % value
+      end
+    end
+  end
+
+  newproperty(:enable) do
+    newvalue(:true)
+    newvalue(:false)
+  end
+
+  newproperty(:minute, :array_matching => :all) do # :array_matching defaults to :first
+    ...
+  end
+
+  newparam(:path) do
+    isnamevar
+  end
+end
+```
 
 也可以为这个参数能够接收的所有值指定一个列表:
 
