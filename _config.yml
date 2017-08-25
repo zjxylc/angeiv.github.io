@@ -9,14 +9,14 @@ kramdown:
 author:
   name: 张幸
   email: angeiv.zhang@gmail.com
-  link: http://angeiv.github.io/
+  link: https://angeiv.github.io/
   weibo:
-  github: http://github.com/angeiv
+  github: https://github.com/angeiv
 
 # 站点信息
 title: 张幸的博客
 description: 张幸的博客
-url: http://angeiv.github.io/
+url: https://angeiv.github.io/
 rss_url: /pages/atom.xml
 
 # avatar头像及Favicon
