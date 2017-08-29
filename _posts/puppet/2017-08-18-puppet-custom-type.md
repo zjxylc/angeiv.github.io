@@ -43,6 +43,7 @@ end
 * `@doc` 文档，用来描述这个类型以及参数的用途
 * `ensurable` 给类型添加了 `ensure` 属性
 * `newparam(:source)` 参数 `source`
+* Namevar: Every type must have at least one mandatory parameter: the [namevar](https://docs.puppet.com/puppet/latest//lang_resources.html#namenamevar). This parameter will uniquely identify each resource of the type on the target system
 * `isnamevar` 声明告知 Puppet source 这个参数是这个类型的名称参数。所以，当声明这个资源的一个实例时，无论给这个资源什么名字，这个名字都会是 `source` 这个参数的值
 * `newparam(:path)` 该类型包含 `path` 参数
 * `validate` 参数校验机制，如果传递不合适的参数，会返回有用的错误信息
